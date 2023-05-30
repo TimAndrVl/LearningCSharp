@@ -26,6 +26,7 @@ namespace Lesson27._05
                 }    
                 Console.WriteLine();
             }
+            Console.WriteLine();
         }
 
         public void Step(int Stp, bool Sym)
