@@ -8,12 +8,14 @@ namespace Lesson27._05
 {
     class GameField
     {
-        char[] fieldArray;
-        char sign;
+        public static char[] fieldArray;
         public GameField()
         {
+            Console.WriteLine("Начали!");
+            Console.WriteLine();
             fieldArray = new char[9] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             this.Print();
+            Console.WriteLine();
         }
 
         public void Print()
@@ -29,17 +31,15 @@ namespace Lesson27._05
             Console.WriteLine();
         }
 
-        public void Step(int Stp, bool Sym)
+        public void Put(int step, char symbol)
         {
-            if (Sym) sign = '+';
-            else sign = '0';
-            fieldArray[Stp - 1] = sign;
+            fieldArray[step - 1] = symbol;
             this.Print();
         }
 
-        public void GetWin(bool contG)
+        public bool StopGame()
         {
-
+            return false;
         }
 
         

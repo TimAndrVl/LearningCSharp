@@ -9,24 +9,25 @@ namespace Lesson27._05
         {
             string playerName = "AV";
             int playerStep;
-            bool first = true;
+            int sequence = 1;
             bool continueGame = true;
             
-            //Console.WriteLine("Привет! Поиграем?");
-            //Console.Write("Введите Ваше имя: ");
+            Console.WriteLine("Привет! Поиграем?");
+            Console.Write("Введите Ваше имя: ");
             //playerName = Console.ReadLine();
-            //Console.Write(playerName + ", будете ходить первым? 1/2");
-            //first = int.Parse(Console.ReadLine());
+            Console.Write(playerName + ", будете ходить первым? 1/2");
+            //sequence = int.Parse(Console.ReadLine());
+            Player P1 = new Player(playerName, sequence);
+            Comp P2 = new Comp();
+
             GameField f1 = new GameField();
+            
             do
             {
-                Console.Write(playerName + ", Ваш ход: ");
-                playerStep = int.Parse(Console.ReadLine());
-                f1.Step(playerStep, first);
-                f1.GetWin(continueGame);
-                first = !first;
+                f1.Put(P1.Step(), P1.Figure);
+                f1.Put(P2.Step(), P2.Figure);
             }
-            while (continueGame);
+            while (!f1.StopGame());
 
 
         }
