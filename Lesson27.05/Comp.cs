@@ -17,16 +17,18 @@ namespace Lesson27._05
     public int Step()
         {
             int number;
-            bool stop = false;
+            bool stop;
             Random rnd = new Random();
             do
             {
-                number = rnd.Next(8) + 1;
-                if (GameField.fieldArray[number] == number) stop = true;
+                number = rnd.Next(8);
+                char c = GameField.fieldArray[number];
+                if (c == 'X' || c == '0') stop = false;
+                else stop = true;
             }
             while (!stop);
             
-            return number;
+            return number + 1;
         }
     }
 }
