@@ -20,6 +20,8 @@ namespace Lesson27._05
 
         public void Print()
         {
+            Console.WriteLine();
+            Console.WriteLine();
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -39,7 +41,11 @@ namespace Lesson27._05
 
         public bool StopGame()
         {
-            return false;
+            bool stop = true;
+            foreach (char sym in fieldArray) 
+                if (sym != 'X' && sym != '0') stop = false; 
+            
+            return stop;
         }
 
         

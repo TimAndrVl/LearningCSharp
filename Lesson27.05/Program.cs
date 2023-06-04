@@ -13,6 +13,10 @@ namespace Lesson27._05
             bool continueGame = true;
             
             Console.WriteLine("Привет! Поиграем?");
+            ConsoleKeyInfo key2 = Console.ReadKey();   
+            if (key2.KeyChar != 'y' && key2.KeyChar != 'l') return;
+            
+            
             Console.Write("Введите Ваше имя: ");
             //playerName = Console.ReadLine();
             Console.Write(playerName + ", будете ходить первым? 1/2");

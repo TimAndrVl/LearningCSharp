@@ -17,8 +17,19 @@ namespace Lesson27._05
         }
         public int Step()
         {
+            char keyPressed;
             Console.Write(this.Name + ", Ваш ход: ");
-            return int.Parse(Console.ReadLine());
+            do
+            {
+                var key2 = Console.ReadKey();
+                keyPressed = key2.KeyChar;
+            }
+            while (keyPressed != '1' && keyPressed != '2' && keyPressed != '3'
+                && keyPressed != '4' && keyPressed != '5' && keyPressed != '6'
+                && keyPressed != '7' && keyPressed != '8' && keyPressed != '9');
+            return int.Parse(keyPressed.ToString());
+            
+            //return int.Parse(Console.ReadLine());
 
         }
 

@@ -14,14 +14,14 @@ namespace Lesson27._05
         public Comp()
         {
         }
-    public int Step()
+        public int Step()
         {
             int number;
             bool stop;
             Random rnd = new Random();
             do
             {
-                number = rnd.Next(8);
+                number = rnd.Next(9);
                 char c = GameField.fieldArray[number];
                 if (c == 'X' || c == '0') stop = false;
                 else stop = true;
