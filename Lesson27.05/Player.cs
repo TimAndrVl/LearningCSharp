@@ -19,29 +19,25 @@ namespace Lesson27._05
         }
         public int Step()
         {
-            char keyPressed;
+            string keysForPressed = "123456789";
+            char keyChar2;
             int keyNumber;
-            bool stop = false;
+            //bool stop;
             char c;
+            //ConsoleKeyInfo key2;
 
             Console.WriteLine();
             Console.Write(this.Name + ", Ваш ход: ");
             do
             {
-                do
-                {
-                    var key2 = Console.ReadKey();
-                    keyPressed = key2.KeyChar;
-                }
-                while (keyPressed != '1' && keyPressed != '2' && keyPressed != '3'
-                    && keyPressed != '4' && keyPressed != '5' && keyPressed != '6'
-                    && keyPressed != '7' && keyPressed != '8' && keyPressed != '9');
+                do keyChar2 = Console.ReadKey().KeyChar;
+                while (!keysForPressed.Contains(keyChar2));
 
-                keyNumber = int.Parse(keyPressed.ToString());
-                c = GameField.fieldArray[keyNumber - 1];
-                if (c != 'X' && c != '0') stop = true;
+                keyNumber = int.Parse(keyChar2.ToString());
+                c = Program.fieldArray[keyNumber - 1];
+                //if (c != 'X' && c != '0') stop = true;
             }
-            while (!stop);
+            while (c == 'X' || c == '0');
 
             Console.WriteLine();
 

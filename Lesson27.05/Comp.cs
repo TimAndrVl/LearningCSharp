@@ -10,33 +10,27 @@ namespace Lesson27._05
     public class Comp : IPlayer
     {
         public string Name { get; } = "Computer";
-        public char Figure { get; set; } = '0';
+        public char Figure { get; set; }
         public int Sequence { get; set; }
-
-/*        public Comp()
-        {
-            if (s == 2) this.Figure = 'X'; 
-        }*/
 
         public int Step()
         {
             int number;
             char c;
-            bool stop = false;
-
-            //Random rnd = new Random();
-            do
-            {
-                Random rnd = new Random();
-                number = rnd.Next(0, 9);
-                c = GameField.fieldArray[number];
-                if (c != 'X' && c != '0') stop = true;
-            }
-            while (!stop);
+            //bool stop = false;
 
             Console.WriteLine("Ходит " + this.Name);
 
-            Thread.Sleep(3000);
+            Thread.Sleep(2500);
+
+            do
+            {
+                //Random rnd = new Random();
+                number = Program.rnd.Next(0, 9);
+                c = Program.fieldArray[number];
+                //if (c != 'X' && c != '0') stop = true;
+            }
+            while (c == 'X' || c == '0');
 
             return number + 1;
         }

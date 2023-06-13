@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,11 @@ namespace Lesson27._05
         //public static char[] fieldArray;
         //public char winFig;
         public int endType;
-        public static char[] fieldArray {get; set;}
+        //public static char[] fieldArray {get; set;}
         
         public GameField()
         {
-            fieldArray = new char[9];
+            //Program.fieldArray = new char[9];
             //Console.WriteLine();
             //fieldArray = new char[9] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             //this.Print();
@@ -27,7 +28,7 @@ namespace Lesson27._05
         {
             Console.WriteLine();
             Console.WriteLine("Начали!");
-            fieldArray = new char[9] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            Program.fieldArray = new char[9] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             this.Print();
         }
 
@@ -38,7 +39,7 @@ namespace Lesson27._05
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Console.Write(fieldArray[i * 3 + j].ToString() + " ");
+                    Console.Write(Program.fieldArray[i * 3 + j].ToString() + " ");
                 }    
                 Console.WriteLine();
             }
@@ -47,7 +48,7 @@ namespace Lesson27._05
 
         public void Put(int step, char fig)
         {
-            fieldArray[step - 1] = fig;
+            Program.fieldArray[step - 1] = fig;
             this.Print();
         }
 
@@ -57,9 +58,9 @@ namespace Lesson27._05
             this.endType = 1; //по-умолчанию 1 - выход с выигрышем. 0 - ничья
 
             //проверка строки
-            for (int i = (step - 1) / 3 * 3; i < 3; i++) 
+            for (int i =  (step - 1) / 3 * 3, j = 0; j < 3; i++, j++) 
             {
-                if (fieldArray[i] == fig) figCounter++;
+                if (Program.fieldArray[i] == fig) figCounter++;
             }
             if (figCounter == 3) return true;
 
@@ -67,7 +68,7 @@ namespace Lesson27._05
             figCounter = 0;
             for (int i = (step - 1) % 3; i < 9; i+=3) 
             {
-                if (fieldArray[i] == fig) figCounter++;
+                if (Program.fieldArray[i] == fig) figCounter++;
             }
             if (figCounter == 3) return true;
 
@@ -77,20 +78,20 @@ namespace Lesson27._05
                 figCounter = 0;
                 for (int i = 0; i < 9; i+=4) 
                 {
-                    if (fieldArray[i] == fig) figCounter++;
+                    if (Program.fieldArray[i] == fig) figCounter++;
                 }
                 if (figCounter == 3) return true;
             
                 figCounter = 0;
                 for (int i = 2; i < 7; i+=2) 
                 {
-                    if (fieldArray[i] == fig) figCounter++;
+                    if (Program.fieldArray[i] == fig) figCounter++;
                 }
                 if (figCounter == 3) return true;
             }
 
             // если нет выигрышных ходов, проверка на заполнение поля
-            foreach (char sym in fieldArray)
+            foreach (char sym in Program.fieldArray)
             {
                 if (sym != 'X' && sym != '0') return false;
                 // если хотя бы одна ячейка не заполнена,

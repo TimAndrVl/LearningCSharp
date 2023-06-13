@@ -7,8 +7,13 @@ namespace Lesson27._05
 {
     class Program
     {
-//        public static char[] fieldArray = new char[9];
-//        public static Random rnd = new Random();
+        // здесь пытался определить переменные, которые используются
+        // в разных классах проекта.
+        // Не получалось, но теперь - да. Наверно не указывал имя класса,
+        // или не определял объект, точно не помню.
+
+        public static char[] fieldArray = new char[9];
+        public static Random rnd = new Random();
 
         static void Main(string[] args)
         {
@@ -16,9 +21,9 @@ namespace Lesson27._05
             string player1Name, player2Name = "Computer", winPlayer;
             int sequence = 0;
             int playerStep;
-            char figureStep;
-            ConsoleKeyInfo key2;
-            
+            char figureStep, keyChar2;
+            string keysForPressed = "ДдLl";
+
 
             Console.WriteLine("Привет! Поиграем в крестики-нолики!");
             Console.WriteLine();
@@ -27,8 +32,7 @@ namespace Lesson27._05
             Console.Write("1 - с компьютером, 2 - вдвоем: ");
             do
             {
-                key2 = Console.ReadKey();
-                switch (key2.KeyChar)
+                switch (Console.ReadKey().KeyChar)
                 {
                     case '1':
                         gameType = 1;
@@ -44,15 +48,15 @@ namespace Lesson27._05
             Console.WriteLine();
             Console.Write("Первый игрок, введите Ваше имя: ");
             player1Name = Console.ReadLine();
+            Console.WriteLine();
+
             if (gameType == 2)
             {
-                Console.WriteLine();
                 Console.Write("Второй игрок, введите Ваше имя: ");
                 player2Name = Console.ReadLine();
             }
             else
             {
-                Console.WriteLine();
                 Console.WriteLine(player1Name + 
                     ", знакомьтесь, второй игрок: " + player2Name);
                 Thread.Sleep(3000);
@@ -60,24 +64,38 @@ namespace Lesson27._05
 
             Player P1 = new Player(player1Name);
 
-            /*switch (gameType)
+            // здесь пытался создавать только один из объектов,
+            // в зависимости от выбора - второй игрок, или компьютер.
+            // Не получалось - дальше по тексту они не были видны
+
+            // снял комментарии с блока switch,
+            // появились ошибки в строках 123, 124 и далее
+            /**/
+            switch (gameType)
             {
                 case 1:
-                    Player P2 = new Player(player2Name, sequence);
+                    Player P2 = new Player(player2Name);
                 break;
                 case 2:
-                    Comp P3 = new Comp(sequence);
+                    Comp P3 = new Comp();
                 break;
             }
-            */
+            /**/
 
+            //пришлось создавать оба объекта,
+            //хотя используется только один
+
+            //далее - рабочий вариант (закомментирован)
+            
+            /*
             Player P2 = new Player(player2Name);
 
             Comp P3 = new Comp();
+            */
 
             GameField f1 = new GameField();
 
-            // Собственно, партия игры
+            // Собственно, партия игры, в цикле
 
             do
             {
@@ -86,8 +104,7 @@ namespace Lesson27._05
                 Console.Write(player1Name + ", выберите очередность хода: 1 - Х, 2 - 0 или 3 - случайный выбор: ");
                 do
                 {
-                    key2 = Console.ReadKey();
-                    switch (key2.KeyChar)
+                    switch (Console.ReadKey().KeyChar)
                     {
                         case '1':
                             sequence = 1;
@@ -96,12 +113,13 @@ namespace Lesson27._05
                             sequence = 2;
                             break;
                         case '3':
-                            Random rnd = new Random();
+                            //Random rnd = new Random();
                             sequence = rnd.Next(1, 3);
                             break;
                     }
                 }
                 while (sequence == 0);
+                
                 switch (sequence) 
                 {
                     case 1:
@@ -147,6 +165,7 @@ namespace Lesson27._05
                     
                     f1.Put(playerStep, figureStep);
                     Console.WriteLine();
+
                     i %= 2;
                     i++;
                 }
@@ -156,10 +175,10 @@ namespace Lesson27._05
                 else Console.WriteLine("Поздравляю, " + winPlayer + "! Конец игры.");
                 Console.WriteLine();
 
-                Console.Write("Продолжим? ");
-                key2 = Console.ReadKey(false);
-           }
-            while (key2.KeyChar == 'y' || key2.KeyChar == 'Y');
+                Console.Write("Продолжим? Д/Н");
+                keyChar2 = Console.ReadKey(false).KeyChar;
+            }
+            while (keysForPressed.Contains(keyChar2));
             
             Console.WriteLine();
             Console.WriteLine("Пока!");
