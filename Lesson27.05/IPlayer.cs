@@ -8,7 +8,7 @@ namespace Lesson27._05
 {
     internal interface IPlayer
     {
-        string Name { get; }
+        string Name { get; set; }
         char Figure { get; set; }
         int Sequence { get; set; }
         int Step();

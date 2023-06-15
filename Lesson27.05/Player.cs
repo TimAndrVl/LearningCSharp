@@ -10,9 +10,10 @@ namespace Lesson27._05
 {
     public class Player : IPlayer
     {
-        public string Name { get; }
+        public string Name { get; set; }
         public char Figure { get; set; } = '0';
         public int Sequence { get; set; }
+        
         public Player(string name) 
         {
             this.Name = name;

@@ -33,9 +33,9 @@ namespace Lesson3
             }
             while (do_i <= 20);
             */
-            string? Phrase = "";
+            /*string? Phrase = "";
             char Separ = '!';
-            Phrase.
+            Phrase.*/
             /*Console.WriteLine("Введите 4 слова");
             for (int i = 1; i <= 4; i++)
             {
@@ -44,9 +44,9 @@ namespace Lesson3
             }
             Console.WriteLine(Phrase);
             */
-            string Word;
+            /*string Word;
             Phrase = "";
-            Separ = '*';
+            Separ = '*';*/
             /*Console.WriteLine("Вводите слова по одному, закончив ввод пустой строкой");
             do
             {
@@ -70,7 +70,7 @@ namespace Lesson3
             }
             Console.WriteLine(Phrase);
             */
-            
+            /*
             Console.Write("Введите длину в метрах: ");
             double m = int.Parse(Console.ReadLine());
             double km = m / 1000;
@@ -81,7 +81,20 @@ namespace Lesson3
             double m = int.Parse(Console.ReadLine());
             double km = m / 1000;
             Console.WriteLine(m + " м = " + km + " км");
+            */
 
+            int i = 0; int j = 1;
+            Console.Write(i + "       " + j);
+            --i;--j;
+            i*= -1;j*= -1;
+            Console.Write(i + "       " + j);
+            --i;--j;
+            i*= -1;j*= -1;
+            Console.Write(i + "       " + j);
+            --i;--j;
+            i*= -1;j*= -1;
+            Console.Write(i + "       " + j);
+            
         }
     }
 }

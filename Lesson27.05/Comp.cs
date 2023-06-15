@@ -9,8 +9,8 @@ namespace Lesson27._05
 {
     public class Comp : IPlayer
     {
-        public string Name { get; } = "Computer";
-        public char Figure { get; set; }
+        public string Name { get; set; } = "Computer";
+        public char Figure { get; set; } = '0';
         public int Sequence { get; set; }
 
         public int Step()

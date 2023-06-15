@@ -10,18 +10,10 @@ namespace Lesson27._05
 {
     public class GameField
     {
-        //public static char[] fieldArray;
-        //public char winFig;
         public int endType;
-        //public static char[] fieldArray {get; set;}
         
         public GameField()
         {
-            //Program.fieldArray = new char[9];
-            //Console.WriteLine();
-            //fieldArray = new char[9] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-            //this.Print();
-            //Console.WriteLine();
         }
 
         public void Reset()
@@ -35,7 +27,7 @@ namespace Lesson27._05
         public void Print()
         {
             Console.WriteLine();
-            for (int i = 0; i < 3; i++)
+            for (int i = 2; i >= 0; i--)
             {
                 for (int j = 0; j < 3; j++)
                 {
