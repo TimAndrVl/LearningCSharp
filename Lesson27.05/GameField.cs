@@ -46,26 +46,46 @@ namespace Lesson27._05
 
         public bool StopGame(int step, char fig)
         {
-            int figCounter = 0;
             this.endType = 1; //по-умолчанию 1 - выход с выигрышем. 0 - ничья
-
-            //проверка строки
-            for (int i =  (step - 1) / 3 * 3, j = 0; j < 3; i++, j++) 
+            
+            int win3(int a, int b, int c)
             {
-                if (Program.fieldArray[i] == fig) figCounter++;
+                int figCounter = 0;
+                for (int i = a; i < a + b; i+=c)
+                    if (Program.fieldArray[i] == fig) figCounter++;
+                return figCounter;
             }
-            if (figCounter == 3) return true;
+
+            step--;
+            //проверка строки
+            if (win3((step) / 3 * 3, 3, 1) == 3) return true;
 
             //проверка столбца
-            figCounter = 0;
-            for (int i = (step - 1) % 3; i < 9; i+=3) 
+            if (win3((step) % 3, 7, 3) == 3) return true;
+
+            //если ход (-1) четный - проверка диагоналей
+            if (step % 2 == 0)
+            {
+                if (win3(0, 9, 4) == 3) return true;
+                if (win3(2, 5, 2) == 3) return true;
+            }
+
+/*            for (int i =  , j = 0; j < 3; i++, j++) 
+            {
+                if (Program.fieldArray[i] == fig) figCounter++;
+            }
+            if (figCounter == 3) return true;
+*/
+            //проверка столбца
+ /*           figCounter = 0;
+            for (int i = (step) % 3; i < 9; i+=3) 
             {
                 if (Program.fieldArray[i] == fig) figCounter++;
             }
             if (figCounter == 3) return true;
 
-            //если ход нечетный - проверка диагоналей
-            if (step % 2 != 0)
+            //если ход (-1) четный - проверка диагоналей
+            if (step % 2 == 0)
             {
                 figCounter = 0;
                 for (int i = 0; i < 9; i+=4) 
@@ -81,16 +101,15 @@ namespace Lesson27._05
                 }
                 if (figCounter == 3) return true;
             }
+ */
 
             // если нет выигрышных ходов, проверка на заполнение поля
-            foreach (char sym in Program.fieldArray)
-            {
-                if (sym != 'X' && sym != '0') return false;
                 // если хотя бы одна ячейка не заполнена,
                 // продолжаем
-            }
-            this.endType = 0;
+            foreach (char sym in Program.fieldArray)
+                if (sym != 'X' && sym != '0') return false;
 
+            this.endType = 0;
             return true;
         }
 

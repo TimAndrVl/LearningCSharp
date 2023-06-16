@@ -15,7 +15,7 @@ namespace Lesson27._05
         {
             int gameType;
             string player1Name, player2Name = "Computer", winPlayer;
-            int sequence = 0;
+            int sequence;
             int playerStep;
             char figureStep, keyChar2;
             string keysForPressed = "ДдLl", keysForPressed1 = "12", keysForPressed123 = "123";
@@ -81,13 +81,14 @@ namespace Lesson27._05
 
                     playerStep = arr[sequence].Step();
                     figureStep = arr[sequence].Figure;
-                    winPlayer =  arr[sequence].Name;
                     
                     f1.Put(playerStep, figureStep);
                     Console.WriteLine();
 
                 }
                 while (!f1.StopGame(playerStep, figureStep));
+                
+                winPlayer =  arr[sequence].Name;
                  
                 if (f1.endType == 0) Console.WriteLine("Ничья! Конец игры.");
                 else Console.WriteLine("Поздравляю, " + winPlayer + "! Конец игры.");
